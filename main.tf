@@ -12,6 +12,12 @@ locals {
   set_values = concat(var.set_values, local.main_set_values, local.init_set_values)
 }
 
+resource "null_resource" "this" {
+  triggers = {
+    image = try(var.images.main, "a")
+  }
+}
+
 resource "helm_release" "this" {
   name             = var.name
   repository       = var.repository
@@ -42,5 +48,11 @@ resource "helm_release" "this" {
       value = each_item.value.value
       type  = try(each_item.value.type, null)
     }
+  }
+
+  lifecycle {
+    replace_triggered_by = [
+      null_resource.this
+    ]
   }
 }
