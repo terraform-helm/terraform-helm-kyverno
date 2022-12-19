@@ -29,7 +29,7 @@ No resources.
 | <a name="input_chart"></a> [chart](#input\_chart) | Chart of helm release | `string` | `"kyverno"` | no |
 | <a name="input_create_namespace"></a> [create\_namespace](#input\_create\_namespace) | Create namespace ? | `bool` | `true` | no |
 | <a name="input_helm_config"></a> [helm\_config](#input\_helm\_config) | Map of helm config | `map(any)` | `{}` | no |
-| <a name="input_images"></a> [images](#input\_images) | Map of images | `map(string)` | `{}` | no |
+| <a name="input_images"></a> [images](#input\_images) | Map of images | <pre>object({<br>    main = optional(string)<br>    init = optional(string)<br>  })</pre> | <pre>{<br>  "init": null,<br>  "main": null<br>}</pre> | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of helm release | `string` | `"kyverno"` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | namespace of helm release | `string` | `"kyverno"` | no |
 | <a name="input_release_version"></a> [release\_version](#input\_release\_version) | version of helm release | `string` | `null` | no |
